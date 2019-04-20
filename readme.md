@@ -1,18 +1,39 @@
-## Overview
+# Overview
+
 Sample app on Laravel5.8
 
 ## Prerequisites
+
 | Software | Install for mac |
 | --- | --- |
 | docker for mac | https://docs.docker.com/docker-for-mac/install/ |
 
-
 ## Set Up
-```
+
+```sh
 docker run --rm --interactive --tty \
   --volume $PWD:/app \
   isuzuki/docker-composer-with-prestissimo install
 ```
+
+### Local Up
+
+```sh
+docker-compose -f docker/docker-compose.yml up -d --build
+```
+
+### Local Down
+
+```sh
+docker-compose -f docker/docker-compose.yml down
+```
+
+### Laravel artisan
+
+```sh
+docker-compose -f docker/docker-compose.yml exec app /var/www/app/artisan
+```
+
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 

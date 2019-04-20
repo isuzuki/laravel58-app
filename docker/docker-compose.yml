@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    ports:
+      - "8080:80"
+    links:
+      - app
+    environment:
+      - PHP_FASTCGI_PASS=app:9000
+      # use unix socket
+      # - PHP_FASTCGI_PASS=unix:/var/run/php-fpm/php-fpm.sock
+
+  app:
+    container_name: app
+    build: ./php-fpm
+    ports:
+      - "9000:9000"
+    volumes:
+      - ..:/var/www/app
+
+  db:
+    container_name: db
+    build: ./mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: username
+      MYSQL_PASSWORD: secret
+    # @see https://qiita.com/kim_kou/items/11420f1aa885638865fb
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
