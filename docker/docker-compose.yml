@@ -12,6 +12,8 @@ services:
       - PHP_FASTCGI_PASS=app:9000
       # use unix socket
       # - PHP_FASTCGI_PASS=unix:/var/run/php-fpm/php-fpm.sock
+    volumes:
+      - ..:/var/www/app
 
   app:
     container_name: app
