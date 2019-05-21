@@ -34,6 +34,12 @@ docker-compose -f docker/docker-compose.yml down
 docker-compose -f docker/docker-compose.yml exec app /var/www/app/artisan
 ```
 
+### Run PHPUnit
+
+```sh
+docker-compose -f docker/docker-compose.yml exec app /var/www/app/vendor/bin/phpunit /var/www/app/tests
+```
+
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
