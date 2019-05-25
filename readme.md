@@ -34,6 +34,12 @@ docker-compose -f docker/docker-compose.yml down
 docker-compose -f docker/docker-compose.yml exec app /var/www/app/artisan
 ```
 
+#### ide helper
+
+```sh
+docker-compose -f docker/docker-compose.yml exec app ash -c "cd /var/www/app; php artisan ide-helper:generate"
+```
+
 ### Run PHPUnit
 
 ```sh
